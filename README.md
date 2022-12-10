@@ -15,4 +15,7 @@ API ENDPOINT:
    - Edit: https://6394c1c14df9248eadabf031.mockapi.io/api/buku/:id (PUT)
    - Hapus: https://6394c1c14df9248eadabf031.mockapi.io/api/buku/:id (DELETE)
    
+   
+   RUN ANDROID
+   npx react-native run-android
  
