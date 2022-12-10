@@ -6,6 +6,11 @@ const styles = StyleSheet.create({
     buttonMenu:{
         width: "90%", margin: 10
     },
+
+    tinyLogo: {
+        width: 50,
+        height: 50,
+      },
    
     cardUtama:{
         shadowColor:{width:0,height:2},
