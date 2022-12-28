@@ -1,9 +1,11 @@
 import React, {Component } from "react";
-import {Text, View, FlatList, Button} from "react-native";
+
+import { Button, Text, TouchableOpacity, View, FlatList, Dimensions, StyleSheet } from "react-native";
 import {Card} from "react-native-paper";
 import axios from 'axios';
 import style from "./styles";
 import GLOBALS from './Global';
+const width = Dimensions.get('window').width
 
 const base_url = GLOBALS.BASE_URL+'mobil/';
 
@@ -38,8 +40,14 @@ class Mobil extends Component {
 
     render() {
       return(
-        <View style={{flex1:1,padding:24}}>
-            <Button title="Tambah Data" onPress={()=>this.props.navigation.navigate('MobilAdd')} color="#33cc33" />
+        <View style={{flex1:1,padding:24,backgroundColor:'black',height:'100%'}}>
+            
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate('MobilAdd')}>
+                    <View style={styles.btnContainerStyle}>
+                        <Text style={styles.btnTextStyle}> Tambah Data Mobil </Text>
+                    </View>
+            </TouchableOpacity>
+
             <FlatList style={{marginTop:20}}
             data={this.state.listData}
             keyExtractor={item=>item.id}
@@ -47,14 +55,27 @@ class Mobil extends Component {
               <Card style={style.cardUtama}>
                 <View>
                   <Text style={style.title}>{item.nama}</Text>
-                  <Text style={style.detail}>Merek: {item.merek}</Text>
-                  <Text style={style.detail}>Bahan Bakar: {item.bahan_bakar}</Text>
-                  <Text style={style.detail}>Harga: Rp. {nominal_rupiah(item.harga)}</Text>
+                  <Text style={style.detail}>Merek             : {item.merek}</Text>
+                  <Text style={style.detail}>Bahan Bakar : {item.bahan_bakar}</Text>
+                  <Text style={style.detail}>Harga             : Rp. {nominal_rupiah(item.harga)}</Text>
 
                 </View>
                 <View style={{flex: 1,flexDirection:'row',justifyContent:'flex-end',marginTop:20}}>
-                  <Button title="Edit" onPress={()=>this.props.navigation.navigate('MobilEdit', { id: item.id })} />
-                  <Button title="Delete" color="#FF3D00" onPress={()=>this.delete_data(item.id)} />
+                  
+                  <TouchableOpacity onPress={()=>this.props.navigation.navigate('MobilEdit', { id: item.id })}>
+                    <View style={styles.btnContainerStyle1}>
+                        <Text style={styles.btnTextStyle}> EDIT </Text>
+                    </View>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={()=>this.delete_data(item.id)}>
+                    <View style={styles.btnContainerStyle2}>
+                        <Text style={styles.btnTextStyle}> DELETE </Text>
+                    </View>
+                  </TouchableOpacity>
+
+
+
                 </View>
               </Card>
             )}/>
@@ -90,4 +111,34 @@ function nominal_rupiah(bilangan){
   }
   return rupiah;
 }
+
+const styles = StyleSheet.create({
+  btnContainerStyle: {
+    backgroundColor: 'green',
+    paddingVertical: 8,
+    width: width / 1.1,
+    borderRadius: 5
+  },
+  btnContainerStyle1: {
+    backgroundColor: 'blue',
+    paddingVertical: 8,
+    width: width / 5,
+    borderRadius: 5, marginRight:5
+  },
+  btnContainerStyle2: {
+    backgroundColor: 'red',
+    paddingVertical: 8,
+    width: width / 5,
+    borderRadius: 5
+  },
+  btnTextStyle: {
+    color: '#ffffff',
+    fontSize: 16,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    justifyContent: 'center', 
+    alignItems: 'center',
+    fontFamily: 'monsserat'
+  }
+})
 export default Mobil;

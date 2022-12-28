@@ -1,15 +1,15 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     containerCenter:{
-        flex: 1,flexDirection: 'column',alignItems: 'center',justifyContent:'center'
+        flex: 1,flexDirection: 'column',alignItems: 'center',justifyContent:'center',backgroundColor:'black'
     },
     buttonMenu:{
         width: "90%", margin: 10
     },
 
     tinyLogo: {
-        width: 50,
-        height: 50,
+        width: 414,
+        height: 896,
       },
    
     cardUtama:{

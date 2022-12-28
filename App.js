@@ -68,9 +68,12 @@ const SplashScreen = ({ navigation }) => {
     )
   }, 3000)
   return <View style={style.containerCenter}>
+   
    <Image  style={style.tinyLogo}
+   
         source={{
-          uri: 'https://reactnative.dev/img/tiny_logo.png',
+          
+          uri: 'https://drive.google.com/uc?id=13lf35uePc9O4JoICEdvb6gAwM97mwygk',
         }} />
         <Text style={{marginTop:20,color:'#000',fontSize:20}}>Loading....</Text>
   </View>;
